@@ -1,0 +1,30 @@
+.container {
+  margin: 1rem 0;
+  min-width: 50vw;
+  box-shadow: var(--bs);
+  border: var(--bdr);
+  border-radius: var(--br);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+}
+.title {
+  min-width: 50%;
+}
+.remove {
+  margin: 0 0.5rem;
+  border: none;
+  border-radius: var(--br);
+  background-color: white;
+  padding: 0.6rem 1rem;
+  line-height: 80%;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+.remove:hover {
+  background-color: var(--text-color);
+  color: white;
+}

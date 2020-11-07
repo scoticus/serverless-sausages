@@ -1,0 +1,34 @@
+.divider {
+  margin: 2rem;
+  width: 100%;
+  border: none;
+  border-bottom: var(--bdr);
+}
+.wrap {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.totals span {
+  margin-right: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+.checkout {
+  background-color: var(--distinct-color);
+  border: none;
+  border-radius: var(--br);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+.checkout:hover:not(:disabled) {
+  background-color: var(--text-color);
+}
+.checkout:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}

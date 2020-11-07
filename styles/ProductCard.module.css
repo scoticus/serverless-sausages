@@ -1,0 +1,56 @@
+.card {
+  margin: 1rem 0;
+  box-shadow: var(--bs);
+  width: 100%;
+  border: var(--bdr);
+  border-radius: var(--br);
+  display: flex;
+}
+.img {
+  border-radius: var(--br) 0 0 var(--br);
+}
+.info {
+  padding: 1rem 2rem;
+}
+.productTitle {
+  margin: 0 0 0.5rem;
+}
+.sku {
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+.description {
+  margin: 2rem 0 1rem;
+  line-height: 160%;
+  font-size: 0.9rem;
+}
+.price {
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+.actions {
+  display: flex;
+  align-items: center;
+}
+.actions p {
+  margin: 0 1rem;
+  font-size: 0.8rem;
+}
+.actions button {
+  margin: 0 0.5rem;
+  border: var(--bdr);
+  border-radius: var(--br);
+  background-color: white;
+  padding: 0.6rem 1rem;
+  line-height: 80%;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+.actions button:hover {
+  background-color: var(--text-color);
+  background-color: var(--distinct-color);
+  color: white;
+}

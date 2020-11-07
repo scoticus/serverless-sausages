@@ -1,9 +1,22 @@
+:root {
+  --text-color: rgba(67, 84, 123, 1);
+  --text-light: rgba(114, 134, 181, 1);
+  --distinct-color: rgba(13, 132, 86, 1);
+
+  --br: 6px;
+  --bdr: 1px solid rgba(220, 220, 220, 1);
+  --bs: 0 3px 6px rgba(67, 84, 123, 0.25);
+
+  --transition-all: all 0.1s;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--text-color);
 }
 
 a {
