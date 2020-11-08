@@ -15,7 +15,22 @@ export default function Cart() {
   const handleClick = async () => {
     setLoading(true);
 
+    /**
+     * Here we take a copy of the items in the cart and shape them to
+     * be sent to Stripe. We use cloneDeep to make a fresh array so
+     * we don't make any changes to the existing cart data (items).
+     *
+     * React-use-cart uses the price key to store the monetary value
+     * of the item whereas Stripe uses it to store the `API ID` of
+     * the item. Therefore we need to reassign the price key to
+     * the item id. We can then get rid of the other data.
+     *
+     * Uncomment the logs and return to get an idea of how this works
+     *
+     */
     let stripeItems = cloneDeep(items);
+    // console.log({stripeItems})
+
     stripeItems.forEach((item) => {
       item.price = item.id;
       delete item.id;
@@ -23,8 +38,12 @@ export default function Cart() {
       delete item.title;
     });
 
+    // console.log({ stripeItems });
+    // return null;
+
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_API_KEY);
 
+    // see https://stripe.com/docs/js/checkout/redirect_to_checkout
     stripe
       .redirectToCheckout({
         lineItems: stripeItems,
@@ -53,16 +72,17 @@ export default function Cart() {
 
       <Layout>
         <h1>Your Cart</h1>
-        <div>
-          {items.map((item) => (
-            <CartItem item={item} key={item.id} />
-          ))}
-        </div>
 
         {isEmpty ? (
           <p>No Items</p>
         ) : (
           <>
+            <div>
+              {items.map((item) => (
+                <CartItem item={item} key={item.id} />
+              ))}
+            </div>
+
             <hr className={styles.divider} />
 
             <div className={styles.wrap}>

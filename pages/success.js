@@ -9,7 +9,38 @@ export default function Success() {
   const { emptyCart, items } = useCart();
 
   useEffect(() => {
-    // copy cart contents into component state
+    /**
+     * After a successful transaction using Stripe Checkout, the user
+     * is redirected back to our success page. This is that page.
+     *
+     * We're not given any data with this redirect, although we can
+     * get Stripe to encode the `session_ID` into the redirect URL.
+     *
+     * In our case we simply want to let the customer know their
+     * order has been received and show them a list of what they have
+     * purchased.
+     *
+     * While we could use some backend magic for this, we still have
+     * the cart contents in localStorage from before the user went
+     * over to Stripe Checkout (react-use-cart keeps a copy of the
+     * cart in localStorage).
+     *
+     * We're going to have to clear the cart (localStorage) anyway
+     * so the user doesn't continue to see the items they've just
+     * purchased in their cart, but before clearing it we could take
+     * a copy and use that to show the customer their order items.
+     *
+     * That is what this useEffect hook does.
+     *
+     * It gets a copy of `items` from `useCart()` and sets the items
+     * to `orderItems` state. It then calls `emptyCart()` which...
+     * empties the cart!
+     *
+     * As if by magic, the customer can view a list of the items
+     * they've just purchased but their cart is now clear so they can
+     * happily go shopping all over again.
+     *
+     */
     setOrderItems(items);
     emptyCart();
   }, []);
